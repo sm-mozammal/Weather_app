@@ -36,6 +36,9 @@ class _WeatherPageState extends State<WeatherPage> {
           ),
         ],
       ),
+      body: Center(
+        child: Text('help'),
+      ),
     );
   }
 }

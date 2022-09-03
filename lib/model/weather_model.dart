@@ -1,3 +1,17 @@
+/// coord : {"lon":-122.08,"lat":37.39}
+/// weather : [{"id":800,"main":"Clear","description":"clear sky","icon":"01d"}]
+/// base : "stations"
+/// main : {"temp":282.55,"feels_like":281.86,"temp_min":280.37,"temp_max":284.26,"pressure":1023,"humidity":100}
+/// visibility : 10000
+/// wind : {"speed":1.5,"deg":350}
+/// clouds : {"all":1}
+/// dt : 1560350645
+/// sys : {"type":1,"id":5122,"message":0.0139,"country":"US","sunrise":1560343627,"sunset":1560396563}
+/// timezone : -25200
+/// id : 420006353
+/// name : "Mountain View"
+/// cod : 200
+
 class CurrentResponseModel {
   CurrentResponseModel({
       this.coord, 
@@ -106,29 +120,54 @@ CurrentResponseModel copyWith({  Coord? coord,
 
 }
 
+/// type : 1
+/// id : 5122
+/// message : 0.0139
+/// country : "US"
+/// sunrise : 1560343627
+/// sunset : 1560396563
+
 class Sys {
   Sys({
+      this.type, 
+      this.id, 
+      this.message, 
       this.country, 
       this.sunrise, 
       this.sunset,});
 
   Sys.fromJson(dynamic json) {
+    type = json['type'];
+    id = json['id'];
+    message = json['message'];
     country = json['country'];
     sunrise = json['sunrise'];
     sunset = json['sunset'];
   }
+  num? type;
+  num? id;
+  num? message;
   String? country;
   num? sunrise;
   num? sunset;
-Sys copyWith({  String? country,
+Sys copyWith({  num? type,
+  num? id,
+  num? message,
+  String? country,
   num? sunrise,
   num? sunset,
-}) => Sys(  country: country ?? this.country,
+}) => Sys(  type: type ?? this.type,
+  id: id ?? this.id,
+  message: message ?? this.message,
+  country: country ?? this.country,
   sunrise: sunrise ?? this.sunrise,
   sunset: sunset ?? this.sunset,
 );
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
+    map['type'] = type;
+    map['id'] = id;
+    map['message'] = message;
     map['country'] = country;
     map['sunrise'] = sunrise;
     map['sunset'] = sunset;
@@ -136,6 +175,8 @@ Sys copyWith({  String? country,
   }
 
 }
+
+/// all : 1
 
 class Clouds {
   Clouds({
@@ -156,36 +197,40 @@ Clouds copyWith({  num? all,
 
 }
 
+/// speed : 1.5
+/// deg : 350
+
 class Wind {
   Wind({
       this.speed, 
-      this.deg, 
-      this.gust,});
+      this.deg,});
 
   Wind.fromJson(dynamic json) {
     speed = json['speed'];
     deg = json['deg'];
-    gust = json['gust'];
   }
   num? speed;
   num? deg;
-  num? gust;
 Wind copyWith({  num? speed,
   num? deg,
-  num? gust,
 }) => Wind(  speed: speed ?? this.speed,
   deg: deg ?? this.deg,
-  gust: gust ?? this.gust,
 );
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['speed'] = speed;
     map['deg'] = deg;
-    map['gust'] = gust;
     return map;
   }
 
 }
+
+/// temp : 282.55
+/// feels_like : 281.86
+/// temp_min : 280.37
+/// temp_max : 284.26
+/// pressure : 1023
+/// humidity : 100
 
 class Main {
   Main({
@@ -194,9 +239,7 @@ class Main {
       this.tempMin, 
       this.tempMax, 
       this.pressure, 
-      this.humidity, 
-      this.seaLevel, 
-      this.grndLevel,});
+      this.humidity,});
 
   Main.fromJson(dynamic json) {
     temp = json['temp'];
@@ -205,8 +248,6 @@ class Main {
     tempMax = json['temp_max'];
     pressure = json['pressure'];
     humidity = json['humidity'];
-    seaLevel = json['sea_level'];
-    grndLevel = json['grnd_level'];
   }
   num? temp;
   num? feelsLike;
@@ -214,24 +255,18 @@ class Main {
   num? tempMax;
   num? pressure;
   num? humidity;
-  num? seaLevel;
-  num? grndLevel;
 Main copyWith({  num? temp,
   num? feelsLike,
   num? tempMin,
   num? tempMax,
   num? pressure,
   num? humidity,
-  num? seaLevel,
-  num? grndLevel,
 }) => Main(  temp: temp ?? this.temp,
   feelsLike: feelsLike ?? this.feelsLike,
   tempMin: tempMin ?? this.tempMin,
   tempMax: tempMax ?? this.tempMax,
   pressure: pressure ?? this.pressure,
   humidity: humidity ?? this.humidity,
-  seaLevel: seaLevel ?? this.seaLevel,
-  grndLevel: grndLevel ?? this.grndLevel,
 );
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -241,12 +276,15 @@ Main copyWith({  num? temp,
     map['temp_max'] = tempMax;
     map['pressure'] = pressure;
     map['humidity'] = humidity;
-    map['sea_level'] = seaLevel;
-    map['grnd_level'] = grndLevel;
     return map;
   }
 
 }
+
+/// id : 800
+/// main : "Clear"
+/// description : "clear sky"
+/// icon : "01d"
 
 class Weather {
   Weather({
@@ -284,6 +322,9 @@ Weather copyWith({  num? id,
   }
 
 }
+
+/// lon : -122.08
+/// lat : 37.39
 
 class Coord {
   Coord({
